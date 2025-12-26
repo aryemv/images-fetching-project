@@ -17,14 +17,14 @@ Open **two terminals** in the root folder.
 ### In the first terminal (server):
 
 ```bash
-cd server
+cd msapps-project-server
 npm install
 ```
 
 ### In the second terminal (client):
 
 ```bash
-cd client
+cd msapps-project
 npm install
 ```
 
