@@ -6,8 +6,8 @@ Follow these steps to run the project locally:
 ## 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/aryemv/images-fetching-project.git
+cd images-fetching-project
 ```
 
 ## 2. Install dependencies
