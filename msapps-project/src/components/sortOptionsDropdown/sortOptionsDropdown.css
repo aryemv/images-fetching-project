@@ -1,0 +1,11 @@
+.sort {
+  display: flex;
+  width: fit-content;
+  height: 50px;
+  align-items: center;
+  margin: auto;
+}
+
+.text {
+  margin-right: 10px;
+}
