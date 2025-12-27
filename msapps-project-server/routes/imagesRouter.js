@@ -1,8 +1,10 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
+import {
+  fetchImagesSortedById,
+  fetchImages,
+} from "../controllers/imagesController.js";
 
-const PIXABAY_API_KEY = "25540812-faf2b76d586c1787d2dd02736";
-const BASE_URL = "https://pixabay.com/api/";
+const router = express.Router();
 
 router.get("/", async (req, res) => {
   /*get the request params:
@@ -18,15 +20,9 @@ router.get("/", async (req, res) => {
     sort = "popular",
   } = req.query;
 
-  //fetch the data
   try {
-    const response = await fetch(
-      `${BASE_URL}?key=${PIXABAY_API_KEY}&q=${category}&page=${page}&per_page=${per_page}&order=${sort}`
-    );
-    const data = await response.json();
-
-    //send the "hits" part as a response
-    res.json(data.hits);
+    const response = await fetchImages(category, page, per_page, sort);
+    res.json(response);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch images" });
   }
@@ -40,18 +36,12 @@ router.get("/sortById", async (req, res) => {
   */
   const { category = "sport", page = 1, per_page = 9 } = req.query;
 
-  //fetch the data
   try {
-    const response = await fetch(
-      `${BASE_URL}?key=${PIXABAY_API_KEY}&q=${category}&page=${page}&per_page=${per_page}`
-    );
-    const data = await response.json();
-
-    //send the "hits" part as a response, sorted ascending by id
-    res.json(data.hits.sort((a, b) => a.id - b.id));
+    const response = await fetchImagesSortedById(category, page, per_page);
+    res.json(response);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch images" });
   }
 });
 
-module.exports = router;
+export default router;

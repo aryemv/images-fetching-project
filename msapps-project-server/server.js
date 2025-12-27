@@ -1,6 +1,6 @@
-const express = require("express");
-const cors = require("cors");
-const imageRoutes = require("./routes/imagesRouter.js");
+import express from "express";
+import cors from "cors";
+import imageRoutes from "./routes/imagesRouter.js";
 
 const app = express();
 const PORT = 3000;
